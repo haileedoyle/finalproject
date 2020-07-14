@@ -4,6 +4,7 @@ include_once __DIR__ . '/../models/model.php';
 
   if($_REQUEST['action'] === 'index') {
     $all_content = Kelc::all();
+    // echo "Index route.";
     echo json_encode($all_content);
   } elseif ($_REQUEST['action'] === 'create') {
     $request_body = file_get_contents('php://input');

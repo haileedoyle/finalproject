@@ -52,13 +52,13 @@ class Content {
         $row_object->description
       );
 
-      content[] = $new_item;
+      // kelc[] = $new_item;
 
       $row_object = pg_fetch_object($results);
 
     }
 
-    return $content;
+    return $kelc;
 
   }
 
