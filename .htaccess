@@ -4,7 +4,7 @@ RewriteCond %{REQUEST_METHOD} ^GET$
 RewriteRule ^kelc$ controllers/control.php?action=index
 
 RewriteCond %{REQUEST_METHOD} ^POST$
-RewriteRule ^kelc$ controllers/control.php?action=create
+RewriteRule ^kelc$ controllers/control.php?action=post
 
 RewriteCond %{REQUEST_METHOD} ^PUT$
 RewriteRule ^kelc$/([0-9]+)$ controllers/control.php?action=update&id=$1

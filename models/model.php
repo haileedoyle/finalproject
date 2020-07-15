@@ -18,7 +18,7 @@ $dbconn = null;
     $dbconn = pg_connect('host=localhost dbname=kelc');
   }
 
-class Item {
+class Style {
   public $id;
   public $name;
   public $image;
@@ -32,45 +32,45 @@ class Item {
   }
 }
 
-class Content {
+class Styles {
   static function all() {
-    $content = array();
+    $styles = array();
 
-    $results = pg_query("SELECT * FROM content");
+    $results = pg_query("SELECT * FROM styles");
 
     $row_object = pg_fetch_object($results);
     while($row_object) {
 
-      $new_item = new Item(
+      $new_style = new Style(
         intval($row_object->id),
         $row_object->name,
         $row_object->image,
         $row_object->description
       );
 
-      $content[] = $new_item;
+      $styles[] = $new_style;
       $row_object = pg_fetch_object($results);
 
     }
-    return $content;
+    return $styles;
   }
 
-  static function create($item) {
-    $query = "INSERT INTO content(name, image, description) VALUES ($1, $2, $3)";
-    $query_params = array($item->name, $item->image, $item->description);
+  static function create($style) {
+    $query = "INSERT INTO styles(name, image, description) VALUES ($1, $2, $3)";
+    $query_params = array($style->name, $style->image, $style->description);
     pg_query_params($query, $query_params);
     return self::all();
   }
 
-  static function update($updated_item) {
-    $query = "UPDATE content SET name = $1, image = $2, description = $3 WHERE id = $4";
-    $query_params = array($updated_item->name, $updated_item->image, $updated_item->description, $updated_item->id);
+  static function update($updated_style) {
+    $query = "UPDATE styles SET name = $1, image = $2, description = $3 WHERE id = $4";
+    $query_params = array($updated_style->name, $updated_style->image, $updated_style->description, $updated_style->id);
     pg_query_params($query, $query_params);
     return self::all();
   }
 
   static function delete($id) {
-    $query = "DELETE FROM content WHERE id = $1";
+    $query = "DELETE FROM styles WHERE id = $1";
     $query_params = array($id);
     $result = pg_query_params($query, $query_params);
     return self::all();

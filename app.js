@@ -1,22 +1,22 @@
 class App extends React.Component {
   state = {
-    content: []
+    styles: []
   }
 
-  updateItem = (event) => {
+  updateStyle = (event) => {
     event.preventDefalut();
     const id = event.target.getAttribute('id');
     axios.put(
       '/kelc/' + id,
       {
-        name: this.state.updateItemName,
-        image: this.state.updateItemImage,
-        description: this.state.updateItemDesc,
+        name: this.state.updateStyleName,
+        image: this.state.updateStyleImage,
+        description: this.state.updateStyleDesc,
       }
     ).then(
       (response) => {
         this.setState({
-          content: response.data
+          styles: response.data
         })
       }
     )
@@ -26,67 +26,72 @@ class App extends React.Component {
     axios.get('/kelc').then(
       (response) => {
         this.setState({
-          content: response.data
+          styles: response.data
         })
       }
     )
   }
 
-  createItem = (event) => {
+  createStyle = (event) => {
     event.preventDefault();
     axios.post(
       '/kelc',
       {
-        name: this.state.newItemName,
-        image: this.state.newItemImage,
-        description: this.state.newItemDesc,
+        name: this.state.newStyleName,
+        image: this.state.newStyleImage,
+        description: this.state.newStyleDesc,
       }
     ).then(
       (response) => {
         this.setState({
-          content: response.data
+          styles: response.data
         })
       }
     )
   }
 
-  changeNewItemDesc = (event) => {
+  changeNewStyleDesc = (event) => {
     this.setState({
-      newItemDesc: event.target.value
+      newStyleDesc: event.target.value
     })
   }
 
-  changeNewItemImage = (event) => {
+  changeNewStyleImage = (event) => {
     this.setState({
-      newItemImage: event.target.value
+      newStyleImage: event.target.value
     })
   }
 
-  changeNewItemName = (event) => {
+  changeNewStyleName = (event) => {
     this.setState({
-      newItemName: event.target.value
+      newStyleName: event.target.value
     })
   }
 
   render = () => {
     return <div>
       <h1>kelc moore beauty</h1>
-      <nav>home about contact</nav>
-      <form onSubmit={this.createItem}>
-        <input onKeyUp={this.changeNewItemName} type="text" placeholder="Name"/><br/>
-        <input onKeyUp={this.changeNewItemImage} type="text" placeholder="Image URL"/><br/>
-        <input onKeyUp={this.changeNewItemDesc} type="text" placeholder="Description"/><br/>
+      <nav>
+        <a href="#">home</a>
+        <a href="#">about</a>
+        <a href="#">contact</a>
+      </nav>
+      <h3>post new style</h3>
+      <form onSubmit={this.createStyle}>
+        <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>
+        <input onKeyUp={this.changeNewStyleImage} type="text" placeholder="Image"/><br/>
+        <input onKeyUp={this.changeNewStyleDesc} type="text" placeholder="Description"/><br/>
         <input type="submit" value="Create"/>
       </form>
       <h2>services</h2>
       <ul>
         {
-          this.state.content.map(
-            (item) => {
+          this.state.styles.map(
+            (style) => {
               return <li className="list-unstyled">
-                <img src={item.image}/>
-                <h3>{item.name}</h3>
-                <p>{item.description}</p>
+                <img src={style.image}/>
+                <h3>{style.name}</h3>
+                <p>{style.description}</p>
               </li>
             }
           )

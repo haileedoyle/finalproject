@@ -3,29 +3,29 @@ header('Content-Type: application/json');
 include_once __DIR__ . '/../models/model.php';
 
   if($_REQUEST['action'] === 'index') {
-    $all_content = Content::all();
+    $all_styles = Styles::all();
     // echo "Index route.";
-    echo json_encode($all_content);
-  } elseif ($_REQUEST['action'] === 'create') {
+    echo json_encode($all_styles);
+  } elseif ($_REQUEST['action'] === 'post') {
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
 
-    $new_item = new Content($body_object->name, $body_object->image, $body_object->description);
-    $all_content = Content::create($new_item);
+    $new_style = new Style(null, $body_object->name, $body_object->image, $body_object->description);
+    $all_styles = Styles::create($new_style);
 
-    echo json_encode($all_content);
+    echo json_encode($all_styles);
   } else if ($_REQUEST['action'] === 'update'){
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
 
-    $updated_item = new Content($_REQUEST["id"], $body_object->name, $body_object->image, $body_object->description);
-    $all_content = content::update($updated_item);
+    $updated_style = new Styles($_REQUEST["id"], $body_object->name, $body_object->image, $body_object->description);
+    $all_styles = content::update($updated_style);
 
-    echo json_encode($all_content);
+    echo json_encode($all_styles);
   } else if ($_REQUEST['action'] === 'delete') {
-    $all_content = Content::delete($_REQUEST["id"]);
+    $all_styles = Styles::delete($_REQUEST["id"]);
 
-    echo json_encode($all_content);
+    echo json_encode($all_styles);
   }
 
  ?>
