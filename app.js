@@ -13,6 +13,17 @@ class App extends React.Component {
     )
   }
 
+  deleteStyle = (event) => {
+    axios.delete(
+      '/kelc/' + event.target.value).then(
+        (response) => {
+          this.setState({
+            styles: response.data
+          })
+        }
+      )
+  }
+
   updateStyle = (event) => {
     event.preventDefault();
     // console.log(this.state);
@@ -100,7 +111,7 @@ class App extends React.Component {
         <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>
         <input onKeyUp={this.changeNewStyleImage} type="text" placeholder="Image"/><br/>
         <input onKeyUp={this.changeNewStyleDesc} type="text" placeholder="Description"/><br/>
-        <input type="submit" value="Create"/>
+        <input type="submit" value="post"/>
       </form>
       <h2>services</h2>
       <ul>
@@ -111,12 +122,15 @@ class App extends React.Component {
                 <img src={style.image}/>
                 <h3>{style.name}</h3>
                 <p>{style.description}</p>
-                <form onSubmit={this.updateStyle}>
+                <form>
                   <input onKeyUp={this.changeUpdateStyleName} type="text" placeholder="Name"/><br/>
                   <input onKeyUp={this.changeUpdateStyleImage} type="text" placeholder="Image"/><br/>
                   <input onKeyUp={this.changeUpdateStyleDesc} type="text" placeholder="Description"/><br/>
-                  <input type="submit" value="Update"/>
+                  <button onClick={this.updateStyle} value={style.id}
+                  className="btn btn-dark">update</button>
                 </form>
+                  <button onClick={this.deleteStyle} value={style.id}
+                  className="btn btn-dark">delete</button>
               </li>
             }
           )
