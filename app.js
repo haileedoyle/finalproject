@@ -122,12 +122,11 @@ class App extends React.Component {
                 <img src={style.image}/>
                 <h3>{style.name}</h3>
                 <p>{style.description}</p>
-                <form>
+                <form onSubmit={this.updateStyle} id={style.id}>
                   <input onKeyUp={this.changeUpdateStyleName} type="text" placeholder="Name"/><br/>
                   <input onKeyUp={this.changeUpdateStyleImage} type="text" placeholder="Image"/><br/>
                   <input onKeyUp={this.changeUpdateStyleDesc} type="text" placeholder="Description"/><br/>
-                  <button onClick={this.updateStyle} value={style.id}
-                  className="btn btn-dark">update</button>
+                  <input type="submit" value="update"/>
                 </form>
                   <button onClick={this.deleteStyle} value={style.id}
                   className="btn btn-dark">delete</button>
