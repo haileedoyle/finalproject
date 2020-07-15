@@ -26,23 +26,23 @@ class App extends React.Component {
 
   updateStyle = (event) => {
     event.preventDefault();
-    // console.log(this.state);
     const id = event.target.getAttribute('id');
     axios.put(
-      '/kelc/' + id,
-      {
-        name: this.state.updateStyleName,
-        image: this.state.updateStyleImage,
-        description: this.state.updateStyleDesc,
-      }
-    ).then(
+        '/kelc/' + id,
+        {
+          name: this.state.updateStyleName,
+          image: this.state.updateStyleImage,
+          description: this.state.updateStyleDesc,
+        }
+    )
+    .then(
       (response) => {
         this.setState({
-          styles: response.data
+            styles: response.data
         })
-      }
-    )
-  }
+    }
+  )
+}
 
   changeUpdateStyleName = (event) => {
     this.setState({
