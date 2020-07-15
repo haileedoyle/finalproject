@@ -39,7 +39,7 @@ class Styles {
     $results = pg_query("SELECT * FROM styles");
 
     $row_object = pg_fetch_object($results);
-    while($row_object) {
+    while($row_object !== false) {
 
       $new_style = new Style(
         intval($row_object->id),

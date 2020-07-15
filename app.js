@@ -3,8 +3,19 @@ class App extends React.Component {
     styles: []
   }
 
+  componentDidMount = () => {
+    axios.get('/kelc').then(
+      (response) => {
+        this.setState({
+          styles: response.data
+        })
+      }
+    )
+  }
+
   updateStyle = (event) => {
-    event.preventDefalut();
+    event.preventDefault();
+    // console.log(this.state);
     const id = event.target.getAttribute('id');
     axios.put(
       '/kelc/' + id,
@@ -22,14 +33,22 @@ class App extends React.Component {
     )
   }
 
-  componentDidMount = () => {
-    axios.get('/kelc').then(
-      (response) => {
-        this.setState({
-          styles: response.data
-        })
-      }
-    )
+  changeUpdateStyleName = (event) => {
+    this.setState({
+      updateStyleName: event.target.value
+    })
+  }
+
+  changeUpdateStyleImage = (event) => {
+    this.setState({
+      updateStyleImage: event.target.value
+    })
+  }
+
+  changeUpdateStyleDesc = (event) => {
+    this.setState({
+      updateStyleDesc: event.target.value
+    })
   }
 
   createStyle = (event) => {
@@ -92,6 +111,12 @@ class App extends React.Component {
                 <img src={style.image}/>
                 <h3>{style.name}</h3>
                 <p>{style.description}</p>
+                <form onSubmit={this.updateStyle}>
+                  <input onKeyUp={this.changeUpdateStyleName} type="text" placeholder="Name"/><br/>
+                  <input onKeyUp={this.changeUpdateStyleImage} type="text" placeholder="Image"/><br/>
+                  <input onKeyUp={this.changeUpdateStyleDesc} type="text" placeholder="Description"/><br/>
+                  <input type="submit" value="Update"/>
+                </form>
               </li>
             }
           )

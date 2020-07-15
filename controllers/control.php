@@ -18,8 +18,8 @@ include_once __DIR__ . '/../models/model.php';
     $request_body = file_get_contents('php://input');
     $body_object = json_decode($request_body);
 
-    $updated_style = new Styles($_REQUEST["id"], $body_object->name, $body_object->image, $body_object->description);
-    $all_styles = content::update($updated_style);
+    $updated_style = new Style($_REQUEST["id"], $body_object->name, $body_object->image, $body_object->description);
+    $all_styles = Styles::update($updated_style);
 
     echo json_encode($all_styles);
   } else if ($_REQUEST['action'] === 'delete') {
