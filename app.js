@@ -111,7 +111,8 @@ class App extends React.Component {
         <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>
         <input onKeyUp={this.changeNewStyleImage} type="text" placeholder="Image"/><br/>
         <input onKeyUp={this.changeNewStyleDesc} type="text" placeholder="Description"/><br/>
-        <input type="submit" value="post"/>
+        <input type="submit" value="post"
+        className="btn btn-dark"/>
       </form>
       <h2>services</h2>
       <ul>
@@ -126,7 +127,8 @@ class App extends React.Component {
                   <input onKeyUp={this.changeUpdateStyleName} type="text" placeholder="Name"/><br/>
                   <input onKeyUp={this.changeUpdateStyleImage} type="text" placeholder="Image"/><br/>
                   <input onKeyUp={this.changeUpdateStyleDesc} type="text" placeholder="Description"/><br/>
-                  <input type="submit" value="update"/>
+                  <input type="submit" value="update"
+                  className="btn btn-dark"/>
                 </form>
                   <button onClick={this.deleteStyle} value={style.id}
                   className="btn btn-dark">delete</button>
