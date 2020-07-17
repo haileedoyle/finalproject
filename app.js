@@ -99,13 +99,40 @@ class App extends React.Component {
   }
 
   render = () => {
-    return <div>
+    return <div className="container-fluid">
+    <div className="header">
       <h1>kelc moore beauty</h1>
-      <nav>
-        <a href="#">home</a>
-        <a href="#">about</a>
-        <a href="#">contact</a>
+    </div>
+    <div className="wrapper">
+      <nav id="sidebar">
+        <ul className="list-unstyled components">
+        <li className="active">
+          <li>
+            <a href="#">home</a>
+          </li>
+          <li>
+            <a href="#">about</a>
+          </li>
+          <li>
+            <a href="#">contact</a>
+          </li>
+          <li>
+            <a href="#">login</a>
+          </li>
+        </li>
+        </ul>
       </nav>
+      <div id="content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span>Toggle Sidebar</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+    </div>
       <h3>post new style</h3>
       <form onSubmit={this.createStyle}>
         <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>

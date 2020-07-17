@@ -1,0 +1,54 @@
+/* * {
+  background-color: #332c45;
+} */
+
+  .container-fluid {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    font-family: 'Amatic SC', cursive;
+  }
+
+  .header {
+    background-color: #4f9278;
+    margin: none;
+  }
+
+  h1 {
+    margin: 40px 0px 30px 0px;
+    text-align: center;
+    font-size: 70px;
+    font-weight: bolder;
+    letter-spacing: 40px;
+    color: white;
+  }
+
+  .wrapper {
+    display: flex;
+    width: 100%;
+  }
+
+  #sidebar {
+      width: 250px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 999;
+      background: #7386D5;
+      color: #fff;
+      transition: all 0.3s;
+  }
+
+  nav {
+    padding: 15px;
+    text-align: center;
+  }
+
+  a {
+    padding: 10px;
+    color: darkgrey;
+    letter-spacing: 10px;
+    font-weight: bolder;
+    font-size: 22px;
+  }
