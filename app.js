@@ -105,34 +105,13 @@ class App extends React.Component {
     </div>
     <div className="wrapper">
       <nav id="sidebar">
-        <ul className="list-unstyled components">
-        <li className="active">
-          <li>
-            <a href="#">home</a>
-          </li>
-          <li>
-            <a href="#">about</a>
-          </li>
-          <li>
-            <a href="#">contact</a>
-          </li>
-          <li>
-            <a href="#">login</a>
-          </li>
-        </li>
-        </ul>
+            <a className="active" href="#">home</a>
+            <a href="#about">about</a>
+            <a href="#contact">contact</a>
+            <a href="#login">login</a>
       </nav>
-      <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
-                    <i class="fas fa-align-left"></i>
-                    <span>Toggle Sidebar</span>
-                </button>
-            </div>
-        </nav>
     </div>
-    </div>
+    <div className="content">
       <h3>post new style</h3>
       <form onSubmit={this.createStyle}>
         <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>
@@ -164,6 +143,7 @@ class App extends React.Component {
           )
         }
       </ul>
+    </div>
     </div>
   }
 
