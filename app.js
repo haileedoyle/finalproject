@@ -100,28 +100,27 @@ class App extends React.Component {
 
   render = () => {
     return <div className="container-fluid">
-    <div className="header">
-      <h1>kelc moore beauty</h1>
-    </div>
     <div className="wrapper">
       <nav id="sidebar">
-            <a className="active" href="#">home</a>
+            <a className="active" href="#home">home</a>
             <a href="#about">about</a>
             <a href="#contact">contact</a>
             <a href="#login">login</a>
+            <h3>post new style</h3>
+            <form onSubmit={this.createStyle}>
+              <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>
+              <input onKeyUp={this.changeNewStyleImage} type="text" placeholder="Image"/><br/>
+              <input onKeyUp={this.changeNewStyleDesc} type="text" placeholder="Description"/><br/>
+              <input type="submit" value="post"
+              className="btn btn-dark"/>
+            </form>
       </nav>
     </div>
     <div className="content">
-      <h3>post new style</h3>
-      <form onSubmit={this.createStyle}>
-        <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>
-        <input onKeyUp={this.changeNewStyleImage} type="text" placeholder="Image"/><br/>
-        <input onKeyUp={this.changeNewStyleDesc} type="text" placeholder="Description"/><br/>
-        <input type="submit" value="post"
-        className="btn btn-dark"/>
-      </form>
-      <h2>services</h2>
-      <ul>
+      <div className="header">
+        <h1>kelc moore beauty</h1>
+      </div>
+      <ul className="carousel">
         {
           this.state.styles.map(
             (style) => {
