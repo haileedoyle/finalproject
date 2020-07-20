@@ -107,7 +107,7 @@ class App extends React.Component {
             <a className="active" href="#home">home</a>
             <a href="#about">about</a>
             <a href="#contact">contact</a>
-            <a href="#login">login</a>
+            <a href="#login">admin login</a>
             <h3>post new style</h3>
             <form onSubmit={this.createStyle}>
               <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>
@@ -119,7 +119,9 @@ class App extends React.Component {
       </nav>
       <div className="about" id="about">
         <img src="https://i.imgur.com/wyyKCwn.jpg" alt="kelc"/>
-        <p>Kelsey is a Creative Stylist originally from Chicago, Illinois. She is heavily involved in fashion, tattoos, and the make up world. <br/> She is currently attending the Steven Papageorge Hair Academy, and graduates in September 2020.</p>
+        <p>
+          Kelsey is a Creative Stylist originally from Chicago, Illinois. She is heavily involved in fashion, tattoos, and the make up world. <br/> She is currently attending the Steven Papageorge Hair Academy in Chicago, and graduates in September 2020.
+        </p>
       </div>
       <ul className="styles">
         {
@@ -131,18 +133,16 @@ class App extends React.Component {
                   <input onKeyUp={this.changeUpdateStyleName} type="text" placeholder="Name"/><br/>
                   <input onKeyUp={this.changeUpdateStyleImage} type="text" placeholder="Image"/><br/>
                   <input onKeyUp={this.changeUpdateStyleDesc} type="text" placeholder="Description"/><br/>
-                  <input type="submit" value="update"
-                  className="btn btn-dark"/>
+                  <input type="submit" value="update" className="btn btn-dark"/><br/>
+                  <button onClick={this.deleteStyle} value={style.id} className="btn btn-dark">delete</button>
                 </form>
-                  <button onClick={this.deleteStyle} value={style.id}
-                  className="btn btn-dark">delete</button>
               </li>
             }
           )
         }
       </ul>
     <footer>
-      <em>Hailee Ann Jo Doyle 2020</em>
+      <em>Hailee Doyle 2020</em>
     </footer>
     </div>
   }
