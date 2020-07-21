@@ -1,6 +1,7 @@
 class App extends React.Component {
   state = {
-    styles: []
+    styles: [],
+    admin: false
   }
 
   componentDidMount = () => {
