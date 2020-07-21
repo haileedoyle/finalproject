@@ -1,17 +1,11 @@
-class App extends React.Component {
-  state = {
-    styles: [],
-    admin: false
-  }
+// ======= //
+// DELETE  //
+// ======= //
 
-  componentDidMount = () => {
-    axios.get('/kelc').then(
-      (response) => {
-        this.setState({
-          styles: response.data
-        })
-      }
-    )
+class Delete extends React.Component {
+  state= {
+    styles: [],
+    admin: true
   }
 
   deleteStyle = (event) => {
@@ -25,25 +19,41 @@ class App extends React.Component {
       )
   }
 
-  updateStyle = (event) => {
-    event.preventDefault();
-    const id = event.target.getAttribute('id');
-    axios.put(
-        '/kelc/' + id,
-        {
-          name: this.state.updateStyleName,
-          image: this.state.updateStyleImage,
-          description: this.state.updateStyleDesc,
-        }
-    )
-    .then(
-      (response) => {
-        this.setState({
-            styles: response.data
-        })
-    }
-  )
+  render = () => {
+    return
+  }
 }
+
+
+// ======= //
+// UPDATE  //
+// ======= //
+
+class Update extends React.Component {
+  state = {
+    styles: [],
+    admin: true
+  }
+
+    updateStyle = (event) => {
+      event.preventDefault();
+      const id = event.target.getAttribute('id');
+      axios.put(
+          '/kelc/' + id,
+          {
+            name: this.state.updateStyleName,
+            image: this.state.updateStyleImage,
+            description: this.state.updateStyleDesc,
+          }
+      )
+      .then(
+        (response) => {
+          this.setState({
+              styles: response.data
+          })
+      }
+    )
+  }
 
   changeUpdateStyleName = (event) => {
     this.setState({
@@ -61,6 +71,33 @@ class App extends React.Component {
     this.setState({
       updateStyleDesc: event.target.value
     })
+  }
+
+    render = () => {
+      {
+        this.state.styles.map(
+          (style) => {
+            return <form onSubmit={this.updateStyle} id={style.id} className="form">
+                <input onKeyUp={this.changeUpdateStyleName} type="text" placeholder="Name"/><br/>
+                <input onKeyUp={this.changeUpdateStyleImage} type="text" placeholder="Image"/><br/>
+                <input onKeyUp={this.changeUpdateStyleDesc} type="text" placeholder="Description"/><br/>
+                <input type="submit" value="update" className="btn btn-dark"/><br/>
+                <button onClick={this.deleteStyle} value={style.id} className="btn btn-dark">delete</button>
+              </form>
+          }
+        )
+      }
+  }
+}
+
+// ======= //
+// CREATE  //
+// ======= //
+
+class Create extends React.Component {
+  state = {
+    styles: [],
+    admin: true
   }
 
   createStyle = (event) => {
@@ -101,6 +138,40 @@ class App extends React.Component {
 
   render = () => {
     return <div className="container-fluid">
+        <h3>post new style</h3>
+        <form onSubmit={this.createStyle}>
+          <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>
+          <input onKeyUp={this.changeNewStyleImage} type="text" placeholder="Image"/><br/>
+          <input onKeyUp={this.changeNewStyleDesc} type="text" placeholder="Description"/><br/>
+          <input type="submit" value="post"
+          className="btn btn-dark"/>
+        </form>
+    </div>
+  }
+}
+
+// ======= //
+//   APP   //
+// ======= //
+
+class App extends React.Component {
+  state = {
+    styles: [],
+    admin: false
+  }
+
+  componentDidMount = () => {
+    axios.get('/kelc').then(
+      (response) => {
+        this.setState({
+          styles: response.data
+        })
+      }
+    )
+  }
+
+  render = () => {
+    return <div className="container-fluid">
       <div className="header">
         <h1>kelc moore beauty</h1>
       </div>
@@ -109,14 +180,7 @@ class App extends React.Component {
             <a href="#about">about</a>
             <a href="#contact">contact</a>
             <a href="#login">admin login</a>
-            <h3>post new style</h3>
-            <form onSubmit={this.createStyle}>
-              <input onKeyUp={this.changeNewStyleName} type="text" placeholder="Name"/><br/>
-              <input onKeyUp={this.changeNewStyleImage} type="text" placeholder="Image"/><br/>
-              <input onKeyUp={this.changeNewStyleDesc} type="text" placeholder="Description"/><br/>
-              <input type="submit" value="post"
-              className="btn btn-dark"/>
-            </form>
+        <Create></Create>
       </nav>
       <div className="about" id="about">
           <div className="contact" id="contact">
@@ -154,13 +218,8 @@ class App extends React.Component {
               (style) => {
                 return <li className="list-unstyled">
                   <img src={style.image}/>
-                  <form onSubmit={this.updateStyle} id={style.id} className="form">
-                    <input onKeyUp={this.changeUpdateStyleName} type="text" placeholder="Name"/><br/>
-                    <input onKeyUp={this.changeUpdateStyleImage} type="text" placeholder="Image"/><br/>
-                    <input onKeyUp={this.changeUpdateStyleDesc} type="text" placeholder="Description"/><br/>
-                    <input type="submit" value="update" className="btn btn-dark"/><br/>
-                    <button onClick={this.deleteStyle} value={style.id} className="btn btn-dark">delete</button>
-                  </form>
+                  <Update></Update>
+                  <Delete></Delete>
                 </li>
               }
             )
@@ -172,7 +231,6 @@ class App extends React.Component {
     </footer>
     </div>
   }
-
 }
 
 ReactDOM.render(
