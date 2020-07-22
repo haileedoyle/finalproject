@@ -12,6 +12,7 @@ Kelsey can login, post new styles, update styles, and delete. Customers can book
 - Bootstrap 4
 - PHP
 - React
+- Node
 
 ### Challenges
 
