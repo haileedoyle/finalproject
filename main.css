@@ -75,12 +75,20 @@
     text-align: center;
   }
 
-  form {
+  /* form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 90%;
     margin: 10px;
+  } */
+
+  form {
+    display: none;
+  }
+
+  button {
+    display: none;
   }
 
   .about {
