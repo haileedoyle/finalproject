@@ -1,7 +1,10 @@
 # Kelc Moore Beauty
 General Assembly - Software Engineering Immersive Remote - 2020
 
-## Brief
+## Live Link
+https://kelcmoorebeauty.herokuapp.com/
+
+## Purpose
 Build my partner an app where clients can view, contact, and keep up with her stylist work. 
 Kelsey can login, post new styles, update styles, and delete. Customers can book appointments and contact through app. 
 
