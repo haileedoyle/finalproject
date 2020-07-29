@@ -14,8 +14,10 @@ Kelsey can login, post new styles, update styles, and delete. Customers can book
 - JavaScript
 - Bootstrap 4
 - PHP
-- React
-- Node
+- PostgreSQL
+- ReactJS
+- Heroku
+- Git
 
 ### Challenges
 
